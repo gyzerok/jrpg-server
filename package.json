@@ -1,0 +1,23 @@
+{
+  "name": "jrpg-server",
+  "version": "0.0.0",
+  "description": "JRPG Game Server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "make test"
+  },
+  "dependencies": {
+    "express": "^4.0.0",
+    "socket.io": "^0.9.16",
+    "mongoose": "^3.8.8",
+    "jsonwebtoken": "^0.2.0",
+    "underscore": "^1.6.0",
+    "socketio-jwt": "^2.0.2",
+    "socket.io-client": "^0.9.16",
+    "chai": "^1.9.1",
+    "async": "^0.7.0",
+    "supertest": "^0.10.0",
+    "body-parser": "^1.0.1"
+  }
+}
