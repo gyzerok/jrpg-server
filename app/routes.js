@@ -1,8 +1,7 @@
 'use strict';
 
 var AuthController = require('./controllers/AuthController');
-var UserController = require('./controllers/UserController').init();
-var GameController = require('./controllers/GameController').init();
+var UserController = require('./controllers/UserController');
 
 module.exports = function (app) {
 
@@ -12,6 +11,9 @@ module.exports = function (app) {
         socket.userId = socket.handshake.decoded_token.userId;
         socket.on('find-game', function (data) {
             UserController.findGame(socket, data);
+        });
+        socket.on('cancel-find-game', function (data) {
+            UserController.cancelFindGame(socket, data);
         });
     });
 };

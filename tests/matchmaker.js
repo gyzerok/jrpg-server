@@ -68,8 +68,6 @@ describe("Server", function () {
     });
 
     it('should create a new game with these clients', function (done) {
-        this.timeout(1000 * 60);
-
         client1 = io.connect(socketURL, {
             'force new connection': true,
             query: 'token=' + token1

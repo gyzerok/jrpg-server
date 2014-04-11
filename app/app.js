@@ -22,10 +22,13 @@ app.use(require('body-parser')());
 // Setting up routes
 require('./routes')(app);
 
-// Starting matchmaker
-var matchmaker = require('./logic/matchmaker');
-matchmaker.init(app);
-matchmaker.start();
+// Starting services
+var matchmakerService = require('./services/MatchmakerService');
+matchmakerService.init(app);
+matchmakerService.start();
+var matchService = require('./services/MatchService');
+matchService.init();
+matchService.start();
 
 // Connecting mongo
 var mongoose = require('mongoose');

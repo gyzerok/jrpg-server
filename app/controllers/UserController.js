@@ -1,24 +1,24 @@
 'use strict';
 
 var UserController = {
-    vent: null,
-
-    init: function () {
-        UserController.vent = require('../vent');
-
-        return UserController;
-    },
+    vent: require('../vent'),
 
     findGame: function (socket, data) {
         var User = require('../models/User');
 
         User.findById(socket.userId, function (err, user) {
             // TODO: Добавить проверку ошибок
-            UserController.vent.emit('new-user', user);
+            UserController.vent.emit('add-user-to-mm', user);
         });
     },
 
-    cancelFindGame: function () {
+    cancelFindGame: function (socket, data) {
+        var User = require('../models/User');
+
+        User.findById(socket.userId, function (err, user) {
+            // TODO: Добавить проверку ошибок
+            UserController.vent.emit('remove-user-from-mm', user);
+        });
     }
 };
 
