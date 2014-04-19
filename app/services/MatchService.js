@@ -1,16 +1,16 @@
 'use strict';
 
-var matchService = {
+var MatchService = {
     vent: require('../vent'),
 
     init: function () {},
 
     start: function () {
-        matchService.vent.on('create-new-match', matchService.createMatch);
+        MatchService.vent.on('create-new-match', MatchService.createMatch);
     },
 
     stop: function () {
-        matchService.vent.removeListener('create-new-match');
+        MatchService.vent.removeListener('create-new-match');
     },
 
     createMatch: function (users) {
@@ -21,4 +21,4 @@ var matchService = {
     }
 };
 
-module.exports = matchService;
+module.exports = MatchService;

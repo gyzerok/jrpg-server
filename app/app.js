@@ -19,16 +19,13 @@ app.io = io.sockets;
 app.io.get = require('./sockByUserId')(app);
 app.use(require('body-parser')());
 
-// Setting up routes
-require('./routes')(app);
-
 // Starting services
-var matchmakerService = require('./services/MatchmakerService');
-matchmakerService.init(app);
-matchmakerService.start();
-var matchService = require('./services/MatchService');
-matchService.init();
-matchService.start();
+var GameService = require('./services/GameService');
+GameService.init(app);
+GameService.start();
+
+// Setting up routes
+require('./routes')(app, GameService);
 
 // Connecting mongo
 var mongoose = require('mongoose');
